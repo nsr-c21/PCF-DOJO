@@ -1,0 +1,66 @@
+{
+    "director_id": "6836ac49-14c2-410e-52f4-447b3b78d09e",
+    "installation_id": "965c7b7a-cc9f-4636-6d7c-b5f8897971a7",
+    "current_vm_cid": "vm-9bcb6aef-00f9-410a-4598-e5da015f14e0",
+    "current_stemcell_id": "9d2e0577-1e53-4341-423d-9f435bb189dd",
+    "current_disk_id": "0727d591-c6dc-4c4a-64c8-54178e5e6382",
+    "current_release_ids": [
+        "6d5d82a2-10ff-4da6-5260-4938acf6991b",
+        "bc71c8b8-2efb-4008-44e3-d6dd716d4eb0",
+        "52377a9c-cf13-4058-69db-9dfe0fb13dfc",
+        "ac63e3c6-404d-4bb8-5c38-70ac2b89c27b",
+        "a63b20a2-1d90-4d5b-6782-e5922ca50cbf",
+        "c24a74a6-ed3c-48fe-7d37-960c82ff4947"
+    ],
+    "current_manifest_sha": "13395cda64794ecf61fe26260cb92805c2ff3e29bbe0eedcba372bef85f5b755608f0900af2a2cbd23b2bc820ec8dab365144f6e09bb93d1567c431247b0ba84",
+    "disks": [
+        {
+            "id": "0727d591-c6dc-4c4a-64c8-54178e5e6382",
+            "cid": "disk-89dab77d-de02-4cd2-7d42-ca4c66182c04",
+            "size": 65536,
+            "cloud_properties": {
+                "type": "pd-standard"
+            }
+        }
+    ],
+    "stemcells": [
+        {
+            "id": "9d2e0577-1e53-4341-423d-9f435bb189dd",
+            "name": "bosh-google-kvm-ubuntu-trusty-go_agent",
+            "version": "3586.24",
+            "cid": "stemcell-2ad494b3-6f61-41ea-78c1-b6283eb299a9"
+        }
+    ],
+    "releases": [
+        {
+            "id": "6d5d82a2-10ff-4da6-5260-4938acf6991b",
+            "name": "bosh",
+            "version": "266.4.0"
+        },
+        {
+            "id": "bc71c8b8-2efb-4008-44e3-d6dd716d4eb0",
+            "name": "bpm",
+            "version": "0.6.0"
+        },
+        {
+            "id": "52377a9c-cf13-4058-69db-9dfe0fb13dfc",
+            "name": "bosh-google-cpi",
+            "version": "27.0.1"
+        },
+        {
+            "id": "ac63e3c6-404d-4bb8-5c38-70ac2b89c27b",
+            "name": "uaa",
+            "version": "60"
+        },
+        {
+            "id": "a63b20a2-1d90-4d5b-6782-e5922ca50cbf",
+            "name": "os-conf",
+            "version": "18"
+        },
+        {
+            "id": "c24a74a6-ed3c-48fe-7d37-960c82ff4947",
+            "name": "credhub",
+            "version": "1.9.3"
+        }
+    ]
+}

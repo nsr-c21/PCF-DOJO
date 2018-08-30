@@ -7,3 +7,4 @@ concourse-demo
 concourse-bosh-deployment
 ca-cert.pem
 install-concourse.sh
+pipelines/vendor
