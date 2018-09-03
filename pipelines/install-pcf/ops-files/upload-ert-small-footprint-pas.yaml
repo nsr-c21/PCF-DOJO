@@ -1,0 +1,4 @@
+- op: replace
+  path: /jobs/name=upload-ert/plan/0/get=pivnet-product/params/globs
+  value:
+    - "srt*.pivotal"

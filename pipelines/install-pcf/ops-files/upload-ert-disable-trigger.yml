@@ -1,0 +1,3 @@
+- op: replace
+  path: /jobs/name=upload-ert/plan/0/get=pivnet-opsmgr/trigger
+  value: false
