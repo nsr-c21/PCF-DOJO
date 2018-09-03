@@ -57,7 +57,7 @@
         port: 8844
         authentication:
           uaa:
-            url: "https://((web_ip)):8443"
+            url: "((external_url)):8443"
             verification_key: ((uaa_jwt.public_key))
             ca_certs:
             - ((atc_tls.ca))
