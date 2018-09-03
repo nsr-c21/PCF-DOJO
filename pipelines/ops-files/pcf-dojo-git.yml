@@ -1,0 +1,9 @@
+- op: add  
+  path: /resources/name=pcf-dojo-git  
+  value:  
+    name: pcf-dojo-git
+    type: git
+    source:
+      uri: git@github.com:nsr-c21/PCF-DOJO.git
+      branch: master
+      private_key: {{git_private_key}} 
