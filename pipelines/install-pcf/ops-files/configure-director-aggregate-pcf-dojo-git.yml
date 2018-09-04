@@ -1,0 +1,9 @@
+- op: replace
+  path: /jobs/name=configure-director/plan/0
+  value:
+    aggregate:
+    - get: pcf-dojo-git
+    - get: pcf-pipelines
+    - get: pivnet-opsmgr
+      passed: [create-infrastructure]
+      params: {globs: []}

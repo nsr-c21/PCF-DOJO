@@ -23,7 +23,12 @@ else
   fly -t c21-$pcf_env set-pipeline \
       -p install-pcf \
       -c <(cat ../vendor/pcf-pipelines/install-pcf/gcp/pipeline.yml | \
-           yaml-patch -o ../ops-files/pcf-pipelines-version.yml) \
+           yaml-patch -o ../ops-files/pcf-pipelines-version.yml \
+                      -o ../ops-files/pcf-dojo-git.yml \
+                      -o ops-files/configure-director-use-prod-ips.yml \
+                      -o ops-files/configure-director-aggregate-pcf-dojo-git.yml \
+                      -o ops-files/create-infrastructure-aggregate.yml \
+                      -o ops-files/create-infrastructure-taskfile.yml) \
       -l params-$pcf_env.yml
 fi
 

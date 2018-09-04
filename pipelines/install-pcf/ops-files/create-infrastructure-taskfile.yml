@@ -1,0 +1,3 @@
+- op: replace
+  path: /jobs/name=create-infrastructure/plan/task=create-infrastructure/file
+  value: pcf-dojo-git/pipelines/install-pcf/tasks/create-infrastructure/task.yml

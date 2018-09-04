@@ -1,0 +1,3 @@
+- op: replace
+  path: /jobs/name=configure-director/plan/task=configure-director/file
+  value: pcf-dojo-git/pipelines/install-pcf/tasks/config-director/task.sh

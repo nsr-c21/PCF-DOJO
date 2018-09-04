@@ -1,0 +1,12 @@
+- op: replace
+  path: /jobs/name=create-infrastructure/plan/0
+  value:
+    aggregate:
+    - get: pcf-dojo-git
+    - get: terraform-state
+    - get: pcf-pipelines
+    - get: pivnet-opsmgr
+      passed: [upload-opsman-image]
+      params:
+        globs:
+        - "*GCP.yml"

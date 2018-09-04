@@ -1,0 +1,229 @@
+
+# Ciphers
+# An ordered, colon-delimited list of Golang supported TLS cipher suites in OpenSSL format.
+# Operators should verify that these are supported by any clients or downstream components that will initiate TLS handshakes with the Router/HAProxy.
+# The recommended settings are filled in below, change as necessary.
+router_tls_ciphers: "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384"
+haproxy_tls_ciphers: "DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384"
+
+# C2C Networking network CIDR
+container_networking_nw_cidr: 10.255.0.0/16
+
+# For credhub integration, Set the number of credhub instances in resource config to 2
+# Primary Encryption Name MUST match one of the encryption key names provided
+# Encryption keys 2 and 3 are optional
+credhub_primary_encryption_name: credhub-encryption-key-1
+credhub_encryption_key_name1: credhub-encryption-key-1
+credhub_encryption_key_secret1: ((credhub-encryption-key-1))
+credhub_encryption_key_name2: # Optional Name 2
+credhub_encryption_key_secret2: # Optional Secret 2
+credhub_encryption_key_name3: # Optional Name 3
+credhub_encryption_key_secret3: # Optional Secret 2
+
+# DB Creds
+# Usernames must be 16 characters or fewer
+db_accountdb_password: ((pcf-db-password))
+db_accountdb_username: pcf-db-user
+db_app_usage_service_password: ((pcf-db-password))
+db_app_usage_service_username: pcf-db-user
+db_autoscale_password: ((pcf-db-password))
+db_autoscale_username: pcf-db-user
+db_ccdb_password: ((pcf-db-password))
+db_ccdb_username: pcf-db-user
+db_diego_password: ((pcf-db-password))
+db_diego_username: pcf-db-user
+db_locket_password: ((pcf-db-password))
+db_locket_username: pcf-db-user
+db_networkpolicyserverdb_password: ((pcf-db-password))
+db_networkpolicyserverdb_username: pcf-db-user
+db_nfsvolumedb_password: ((pcf-db-password))
+db_nfsvolumedb_username: pcf-db-user
+db_notifications_password: ((pcf-db-password))
+db_notifications_username: pcf-db-user
+db_routing_password: ((pcf-db-password))
+db_routing_username: pcf-db-user
+db_silk_password: ((pcf-db-password))
+db_silk_username: pcf-db-user
+db_uaa_password: ((pcf-db-password))
+db_uaa_username: pcf-db-user
+db_cloudsqldb_tier: db-f1-micro
+
+# Domain Names for ERT
+# This is the domain you will access ERT with, for example: pcf.example.com.  A hosted zone will be created for this domain.
+pcf_ert_domain: pcf.int.21cineplex.com
+# e.g. system.pcf.example.com, this needs to be a subdomain of pcf_ert_domain
+system_domain: sys.pcf.int.21cineplex.com
+# e.g. apps.pcf.example.com, this needs to be a subdomain of pcf_ert_domain
+apps_domain: apps.pcf.int.21cineplex.com
+
+# Errands to disable prior to deploying ERT
+# Valid values:
+#   all
+#   none
+#   "" (empty string - equivalent to none)
+#   Any combination of the following, separated by comma:
+#     bootstrap
+#     deploy-autoscaler
+#     deploy-notifications
+#     deploy-notifications-ui
+#     nfsbrokerpush
+#     push-apps-manager
+#     push-pivotal-account
+#     push-usage-service
+#     rejoin-unsafe
+#     send-email
+#     smoke_tests
+#     test-autoscaling
+ert_errands_to_disable: none
+
+# PCF Elastic Runtime minor version to track
+#ert_major_minor_version: ^2\.0\.[0-9]+$ # ERT minor version to track (e.g ^2\.0\.[0-9]+$ will track 2.0.x versions)
+ert_major_minor_version: ^2\.2\.[2]+$ # ERT minor version to track (e.g ^2\.0\.[0-9]+$ will track 2.0.x versions)
+
+# Optional. Duration in seconds to maintain an open connection when client supports keep-alive.
+frontend_idle_timeout: 601
+
+# GCP project to create the infrastructure in
+gcp_project_id: cinemaxxi-pcf-prod
+
+# GCP region
+gcp_region: asia-southeast1
+
+# Identifier to prepend to GCP infrastructure names/labels; this should be globally unique
+gcp_resource_prefix: cinemaxxi-pcf-prod
+
+# GCP credentials JSON. The service account must have the Editor role.
+gcp_service_account_key: |
+  {
+    "type": "service_account",
+    "project_id": "((gcp_service_account_key_project_id))",
+    "private_key_id": "((gcp_service_account_key_private_key_id))",
+    "private_key": "((gcp_service_account_key_private_key))",
+    "client_email": "((gcp_service_account_key_client_email))",
+    "client_id": "((gcp_service_account_key_client_id))",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "((gcp_service_account_key_client_x509_cert_url))"
+  }
+
+# GCP Interopable storage access key: https://console.cloud.google.com/storage/settings
+gcp_storage_access_key: ((gcp_storage_access_key))
+gcp_storage_secret_key: ((gcp_storage_secret_key))
+
+# Storage Location
+gcp_storage_bucket_location: ASIA-SOUTHEAST1
+
+# GCP Zones
+gcp_zone_1: asia-southeast1-a
+gcp_zone_2: asia-southeast1-b
+gcp_zone_3: asia-southeast1-c
+
+# Optional - if your git repo requires an SSH key.
+#git_private_key: #((git_private_key))
+git_private_key: |
+  -----BEGIN RSA PRIVATE KEY-----
+  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
+  -----END RSA PRIVATE KEY-----
+
+# Required if haproxy_forward_tls is enabled - HAProxy will use the CA provided to verify the certificates provided by the router.
+haproxy_backend_ca:
+
+# If enabled HAProxy will forward all requests to the router over TLS (enable|disable)
+haproxy_forward_tls: disable
+
+# Whether or not the ERT VMs are internet connected.
+internet_connected: false
+
+# Email address for sending mysql monitor notifications
+mysql_monitor_recipient_email: anggoro.sugiharto@nsr.co.id
+
+# Operations Manager credentials to set
+# opsman_admin_username/opsman_admin_password needs to be specified
+opsman_admin_username: ((opsman_admin.username))
+opsman_admin_password: ((opsman_admin.password))
+
+# # The domain to access Operations Manager; this must be your pcf_ert_domain with "opsman." as a prefix. For example, opsman.pcf.example.com
+opsman_domain_or_ip_address: opsman.pcf.int.21cineplex.com
+
+# PCF Ops Manager minor version to track
+#opsman_major_minor_version: ^2\.0\.[0-9]+$ # Ops Manager minor version to track (e.g ^2\.0\.[0-9]+$ will track 2.0.x versions)
+opsman_major_minor_version: ^2\.2\.[1]+$ # Ops Manager minor version to track (e.g ^2\.0\.[0-9]+$ will track 2.0.x versions)
+
+# Optional PEM-encoded certificates to add to BOSH director
+opsman_trusted_certs: |
+
+# Pivnet token for downloading resources from Pivnet. Find this token at https://network.pivotal.io/users/dashboard/edit-profile
+pivnet_token: ((pivnet_token))
+
+# Optional. If blank the cert(s) will be generated:
+poe_ssl_name1:
+poe_ssl_cert1:
+poe_ssl_key1:
+
+# Optional - these certificates can be used to validate the certificates from incoming client requests.
+# All CA certificates should be appended together into a single collection of PEM-encoded entries.
+routing_custom_ca_certificates:
+
+# Disable HTTP on gorouters (true|false)
+routing_disable_http: true
+
+# Support for the X-Forwarded-Client-Cert header. Possible values: (load_balancer|ha_proxy|router)
+routing_tls_termination: load_balancer
+
+# Setting appropriate Application Security Groups is critical for a secure
+# deployment. Change the value of the param below to "X" to acknowledge that
+# once the Elastic Runtime deployment completes, you will review and set the
+# appropriate application security groups.
+# See https://docs.pivotal.io/pivotalcf/opsguide/app-sec-groups.html
+security_acknowledgement: "X"
+
+terraform_statefile_bucket: cinemaxxi-pcf-prod-terraform-state
