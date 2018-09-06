@@ -6,4 +6,4 @@
     source:
       uri: git@github.com:pivotal-cf/pcf-pipelines.git
       branch: "v0.23.5"
-      private_key: {{git_private_key}} 
+      private_key: ((git_private_key))

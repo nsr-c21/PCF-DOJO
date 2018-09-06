@@ -6,4 +6,4 @@
     source:
       uri: git@github.com:nsr-c21/PCF-DOJO.git
       branch: master
-      private_key: {{git_private_key}} 
+      private_key: ((git_private_key))
