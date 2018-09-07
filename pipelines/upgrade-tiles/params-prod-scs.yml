@@ -19,58 +19,7 @@ enable_errands:
 # within the stemcell to download, e.g. "vsphere", "aws", "azure", "google" must be lowercase.
 iaas_type: google
 
-git_private_key: |
-  -----BEGIN RSA PRIVATE KEY-----
-  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
-  -----END RSA PRIVATE KEY-----
+git_private_key: ((git_private_key.private_key))
 
 # Operations Manager
 # ------------------------------

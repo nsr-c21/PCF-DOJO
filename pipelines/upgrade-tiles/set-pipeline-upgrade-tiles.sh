@@ -15,8 +15,25 @@ echo "Initiating fly for $ENV_NAME Environment"
 
 #fly -t c21-pcf-$ENV_NAME set-pipeline \
 #  -p upgrade-tile-$TILE_NAME \
-#  -c ../vendor/pcf-pipelines/upgrade-tile/pipeline.yml \
+#  -c <(cat ../vendor/pcf-pipelines/upgrade-tile/pipeline.yml | \
+#  yaml-patch -o ../ops-files/pcf-pipelines-version.yml) \
 #  -l params-$ENV_NAME-$TILE_NAME.yml
+
+#exit 0
+
+if [ $ENV_NAME = "prod" ]; then
+
+fly -t c21-pcf-$ENV_NAME set-pipeline \
+  -p upgrade-tile-$TILE_NAME \
+  -c <(cat ../vendor/pcf-pipelines/upgrade-tile/pipeline.yml | \
+  yaml-patch -o ../ops-files/pcf-pipelines-version.yml) \
+  -l params-$ENV_NAME-$TILE_NAME.yml
+
+exit 1
+
+fi
+
+if [ $ENV_NAME =  "dev" ]; then
 
 fly -t c21-pcf-$ENV_NAME set-pipeline \
   -p upgrade-tile-$TILE_NAME \
@@ -24,3 +41,7 @@ fly -t c21-pcf-$ENV_NAME set-pipeline \
   yaml-patch -o ../ops-files/pcf-pipelines-version.yml \
              -o ops-files/schedule-time-$TILE_NAME.yml) \
   -l params-$ENV_NAME-$TILE_NAME.yml
+
+exit 1
+
+fi

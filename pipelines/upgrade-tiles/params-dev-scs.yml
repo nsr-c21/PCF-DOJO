@@ -58,4 +58,4 @@ product_globs: "*pivotal"
 product_slug: p-spring-cloud-services
 
 # The minor product version to track, as a regexp. To track 1.11.x of a product, this would be "^2\.0\.[0-9]+$", as shown below.
-product_version_regex: ^2\.0\.[0]+$
+product_version_regex: ^2\.0\.[0-9]+$
